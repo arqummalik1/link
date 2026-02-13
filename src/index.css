@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg-slate: #0f172a;
+  /* slate-900 */
+  --color-tx-emerald: #34d399;
+  /* emerald-400 */
+  --color-tx-blue: #0ea5e9;
+  /* sky-500 */
+}
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100 antialiased h-screen overflow-hidden transition-colors duration-300;
+  }
+}
+
+/* Scrollbar customization if needed */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-700/50 rounded-full;
+}

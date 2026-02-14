@@ -11,7 +11,7 @@ import { Button } from '../components/ui/Button';
 import { type Link } from '../context/LinkContext';
 
 export const Dashboard: React.FC = () => {
-    const { links, categories, deleteLink, deleteCategory } = useLinks();
+    const { links, categories, loading, deleteLink, deleteCategory } = useLinks();
     const { theme, toggleTheme } = useTheme();
     const { signOut } = useAuth();
     const [searchParams] = useSearchParams();
@@ -124,6 +124,7 @@ export const Dashboard: React.FC = () => {
                     links={links}
                     categories={categories}
                     searchQuery={searchQuery}
+                    loading={loading}
                     onEdit={handleEdit}
                     onDelete={handleDelete}
                     onDeleteCategory={handleDeleteCategory}

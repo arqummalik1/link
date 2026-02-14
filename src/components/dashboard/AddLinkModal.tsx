@@ -5,7 +5,7 @@ import { Button } from '../ui/Button';
 import { useLinks } from '../../context/LinkContext';
 import { categorizeUrl } from '../../utils/categorize';
 import { getFavicon, generateTitle } from '../../utils/metadata';
-import { type Link } from '../../lib/storage';
+import { type Link } from '../../context/LinkContext';
 
 interface AddLinkModalProps {
     isOpen: boolean;

@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { Trash2 } from 'lucide-react';
-import { type Link, type Category } from '../../lib/storage';
+import { type Link, type Category } from '../../context/LinkContext';
 import { LinkItem } from './LinkItem';
 
 interface LinkGridProps {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { MoreVertical, Trash2, Edit2 } from 'lucide-react';
-import { type Link } from '../../lib/storage';
+import { type Link } from '../../context/LinkContext';
 
 interface LinkItemProps {
     link: Link;

@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { Plus, Search, Sun, Moon } from 'lucide-react';
+import { Plus, Search, Sun, Moon, LogOut } from 'lucide-react';
 import { useSearchParams } from 'react-router-dom';
 import { useLinks } from '../context/LinkContext';
 import { useTheme } from '../context/ThemeContext';
+import { useAuth } from '../context/AuthContext';
 import { LinkGrid } from '../components/dashboard/LinkGrid';
 import { AddLinkModal } from '../components/dashboard/AddLinkModal';
 
 import { Button } from '../components/ui/Button';
-import { type Link } from '../lib/storage';
+import { type Link } from '../context/LinkContext';
 
 export const Dashboard: React.FC = () => {
     const { links, categories, deleteLink, deleteCategory } = useLinks();
     const { theme, toggleTheme } = useTheme();
+    const { signOut } = useAuth();
     const [searchParams] = useSearchParams();
     const [isAddModalOpen, setIsAddModalOpen] = useState(false);
     const [editingLink, setEditingLink] = useState<Link | null>(null);
@@ -62,7 +64,7 @@ export const Dashboard: React.FC = () => {
     return (
         <div className="min-h-screen bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 font-sans selection:bg-emerald-500/30 transition-colors duration-300">
             {/* Header */}
-            <header className="sticky top-0 z-30 bg-slate-900/80 dark:bg-slate-900/80 bg-white/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
+            <header className="sticky top-0 z-30 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
                     <div className="flex items-center gap-2">
                         <div className="w-8 h-8 bg-gradient-to-br from-emerald-400 to-cyan-500 rounded-lg flex items-center justify-center shadow-lg shadow-emerald-500/20">
@@ -104,6 +106,14 @@ export const Dashboard: React.FC = () => {
                             <Plus className="w-5 h-5 sm:mr-1" />
                             <span className="hidden sm:inline">Add Link</span>
                         </Button>
+
+                        <button
+                            onClick={signOut}
+                            className="p-2 rounded-full text-slate-500 hover:bg-red-50 hover:text-red-500 dark:hover:bg-red-500/10 dark:text-slate-400 dark:hover:text-red-400 transition-colors"
+                            title="Log Out"
+                        >
+                            <LogOut size={20} />
+                        </button>
                     </div>
                 </div>
             </header>

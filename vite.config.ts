@@ -16,7 +16,7 @@ export default defineConfig({
         background_color: '#0f172a',
         display: 'standalone',
         orientation: 'portrait-primary',
-        start_url: '.',
+        start_url: '/',
         icons: [
           {
             src: 'pwa-192x192.png',
@@ -47,6 +47,8 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
+        navigateFallback: 'index.html',
+        navigateFallbackAllowlist: [/^\//, /^\/add-link/, /^\/login/],
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/www\.google\.com\/s2\/favicons/,
